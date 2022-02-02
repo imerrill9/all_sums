@@ -38,7 +38,7 @@ def find_combinations_given_start(current_value, target_value, combination, solu
     if tuple(sorted(combination)) in solutions or sum(combination) > target_value:  # prune
         return solutions
     elif sum(combination) == target_value:  # add found solution to solutions
-        # uncomment to watch for values that are too large for this solution ( >18 lol XD)
+        # uncomment to watch for values that are too large for this solution ( >20 lol XD)
         # print(f"Solution found! {combination}")
         solutions.add(tuple(sorted(combination)))
         return solutions
@@ -50,8 +50,8 @@ def find_combinations_given_start(current_value, target_value, combination, solu
 
         # branch 2 (Add every possible value less than the target)
         branch_two = combination.copy()
-        for coin in range(1, target_value):
-            branch_two.append(coin)
+        for i in range(1, target_value):
+            branch_two.append(i)
             solutions.update(find_combinations_given_start(current_value, target_value, branch_two, solutions))
 
         return solutions
